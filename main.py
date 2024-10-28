@@ -7,7 +7,8 @@ import visualization
 
 
 def import_a_csv_file() -> pd.DataFrame:
-    pass
+    data = pd.read_csv("sampledata.csv")
+    return data
 
 
 def main():
