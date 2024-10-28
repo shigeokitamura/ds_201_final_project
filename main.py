@@ -35,7 +35,7 @@ def main():
         option = input("Choose an option (0-11): ")
 
         match option:
-            case "1":
+            case "0":
                 df = import_a_csv_file()
             case "11":
                 break
