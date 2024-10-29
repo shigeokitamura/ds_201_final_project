@@ -1,6 +1,4 @@
 import pandas as pd
-from pandas.core.interchange.dataframe_protocol import DataFrame
-
 import data_management
 import budget_management
 import data_analysis
@@ -11,8 +9,6 @@ def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
 
-def view_all_trans(df):
-    print(df)
 
 
 def main():
@@ -41,8 +37,6 @@ def main():
         match option:
             case "0":
                 df = import_a_csv_file()
-            case "11":
-                break
             case "1":
                 try:
                     view_all_trans(df)
@@ -53,6 +47,9 @@ def main():
                     data_management.view_trans_by_date_range(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
+            case "11":
+                break
+
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,9 @@
 from datetime import datetime
 
+def view_all_trans(df):
+    print()
+    print(df)
+    print()
 
 def view_trans_by_date_range(df):
     while True:
