@@ -23,7 +23,8 @@ def view_trans_by_date_range(df):
                 print("You should follow this format using number(YYYY-MM-DD).")
 
     range_date = df[(df['Date'] > start_date) & (df['Date'] < end_date)]
+    print()
     print(range_date)
-
+    print()
 
 

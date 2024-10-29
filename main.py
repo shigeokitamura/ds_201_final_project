@@ -9,8 +9,6 @@ def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
 
-
-
 def main():
     print("=== Personal Finance Tracker ===")
     while True:
@@ -39,7 +37,7 @@ def main():
                 df = import_a_csv_file()
             case "1":
                 try:
-                    view_all_trans(df)
+                    data_management.view_all_trans(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
             case "2":
