@@ -38,6 +38,8 @@ def main():
         match option:
             case "0":
                 df = import_a_csv_file()
+            case "3":
+                data_management.add_transaction()
             case "11":
                 break
 
