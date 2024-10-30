@@ -55,7 +55,7 @@ def main():
                 try:
                     df = data_management.del_transaction(df)
                 except UnboundLocalError or ValueError:
-                    print("There is no file.") 
+                    print("There is no file.")
             case "6":
                 try:
                     data_management.analyze_spending_by_category(df)
