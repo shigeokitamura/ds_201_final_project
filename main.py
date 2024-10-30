@@ -1,6 +1,4 @@
 import pandas as pd
-from pandas.core.interchange.dataframe_protocol import DataFrame
-
 import data_management
 import budget_management
 import data_analysis
@@ -43,7 +41,7 @@ def main():
                 df = import_a_csv_file()
             case "1":
                 try:
-                    view_all_trans(df)
+                    data_management.view_all_trans(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
             case "2":
