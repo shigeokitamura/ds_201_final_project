@@ -1,6 +1,8 @@
 import pandas as pd
 from datetime import datetime
 
+
+
 def del_transaction(df):
     print(df)
     while True:
@@ -113,3 +115,57 @@ def save_transaction_to_csv(df):
     df.to_csv(f'{csv_name}.csv', index=False)
     print('complete')
     print()
+
+def edit_transaction(df):
+    print(df)
+    while True:
+        edt = input("Enter the index of the transaction to edit: ")
+        edt = int(edt)
+        index_data = list(df.index)
+
+        if edt in index_data:
+            print("Current Transaction Details:")
+            print(df.loc[edt])
+
+            new_date = input("Enter the date (YYYY-MM-DD) or press Enter to keep current: ")
+            if new_date != "":
+                try:
+                    datetime.strptime(new_date, "%Y-%m-%d")
+                except ValueError:
+                    print(f"'{datetime}' is not a valid format (YYYY-MM-DD)")
+                    print("Please try again")
+                    print()
+                    continue
+            new_category = input("Enter new category or press Enter to keep current: ")
+            new_category = new_category.capitalize()
+            new_description = input("Enter new description or press Enter to keep current: ")
+            new_description = new_description.capitalize()
+            new_amount = input("Enter new amount or press Enter to keep current: ")
+            if new_amount:
+                try:
+                    new_amount = float(new_amount)
+                except ValueError:
+                    print(f"{new_amount} is not a valid format ")
+                    print("Please try again")
+                    print()
+                    continue
+            else:
+                new_amount = None
+
+            if new_date != "":
+                df.loc[edt, 'Date'] = new_date
+            if new_category != "":
+                df.loc[edt, 'Category'] = new_category
+            if new_description != "":
+                df.loc[edt, 'Description'] = new_description
+            if new_amount is not None:
+                df.loc[edt, 'Amount'] = new_amount
+
+            print("Transaction updated successfully!")
+            break
+        else:
+            print("Invalid index")
+            print("Please try again")
+            print()
+            continue
+    return df
