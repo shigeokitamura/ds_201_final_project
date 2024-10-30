@@ -1,6 +1,4 @@
 import pandas as pd
-from pandas.core.interchange.dataframe_protocol import DataFrame
-
 import data_management
 import budget_management
 import data_analysis
@@ -10,10 +8,6 @@ import visualization
 def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
-
-def view_all_trans(df):
-    print(df)
-
 
 def main():
     print("=== Personal Finance Tracker ===")
@@ -41,6 +35,16 @@ def main():
         match option:
             case "0":
                 df = import_a_csv_file()
+            case "1":
+                try:
+                    data_management.view_all_trans(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
+            case "2":
+                try:
+                    data_management.view_trans_by_date_range(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "11":
                 break
             case "1":
