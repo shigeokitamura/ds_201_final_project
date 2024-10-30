@@ -1,5 +1,4 @@
 import pandas as pd
-
 import data_management
 import budget_management
 import data_analysis
@@ -10,12 +9,10 @@ def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
 
-
 def main():
     print("=== Personal Finance Tracker ===")
-
     while True:
-        menues = [
+        menus = [
             "Import a CSV File",
             "View All Transactions",
             "View Transactions by Date Range",
@@ -30,7 +27,7 @@ def main():
             "Exit",
         ]
 
-        for idx, menu in enumerate(menues):
+        for idx, menu in enumerate(menus):
             print(f"{idx}. {menu}")
 
         option = input("Choose an option (0-11): ")
@@ -38,6 +35,16 @@ def main():
         match option:
             case "0":
                 df = import_a_csv_file()
+            case "1":
+                try:
+                    data_management.view_all_trans(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
+            case "2":
+                try:
+                    data_management.view_trans_by_date_range(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "11":
                 break
 
