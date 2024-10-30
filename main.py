@@ -48,6 +48,8 @@ def main():
             case "3":
                 try:
                     data_management.add_transaction(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "6":
                 try:
                     data_management.analyze_spending_by_category(df)
