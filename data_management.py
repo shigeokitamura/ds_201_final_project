@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+import visualization
 
 
 
@@ -100,6 +101,22 @@ def analyze_spending_by_category(df):
     print(f'This is total spending for each category.')
     print(total_spending)
     print()
+
+    while True:
+        user = input('Do you want to see pie chart representing the distribution of spending across categories? (Yes/No): ')
+        if user.lower() in ['yes','y']:
+            visualization.distribution_of_spending_by_categories(df)
+            print()
+            break
+        elif user.lower() in ['no', 'n']:
+            print('Back to the menus')
+            print()
+            break
+        else:
+            print("Follow the format (Yes/No): ")
+            print()
+
+
 
 def top_spending_category(df):
     total_spending = making_total_spending_data_frame(df)
