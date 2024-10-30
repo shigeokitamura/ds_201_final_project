@@ -18,13 +18,51 @@ def del_transaction(df):
             print()
             continue
     print(df)
+
+def add_transaction(df):
+    # print(df)
+    while True:
+        date = input("Enter the date (YYYY-MM-DD): ")
+        try:
+            datetime.strptime(date, "%Y-%m-%d")
+        except ValueError:
+            print(f"'{datetime}' is not a valid format (YYYY-MM-DD)")
+            print("Please try again")
+            print()
+            continue
+
+        category = input("Enter the category (e.g., Food, Rent): ")
+        category = category.capitalize()
+
+        description = input("Enter a description: ")
+        description = description.capitalize()
+
+        amount = input("Enter the amount: ")
+        if not amount.isnumeric():
+            print(f"{amount} is not a valid format ")
+            print("Please try again")
+            print()
+            continue
+        ex_or_inc = input("Is it an Income or an Expense: ")
+        ex_or_inc = ex_or_inc.capitalize()
+        if ex_or_inc not in ["Income", "Expense"]:
+            print(f"{ex_or_inc} is not a valid format")
+            print("Please try again")
+            print()
+            continue
+
+        data = {'Date': [date], 'Category': [category], 'Description': [description], 'Amount':[amount], 'Type': [ex_or_inc]}
+        df = pd.concat([df, pd.DataFrame(data)], ignore_index=True)
+
+        print("Transaction added successfully!")
+        print()
+        break
     return df
 
 def view_all_trans(df):
     print()
     print(df)
     print()
-
 
 def view_trans_by_date_range(df):
     while True:
@@ -36,23 +74,36 @@ def view_trans_by_date_range(df):
             print("You should follow this format using number(YYYY-MM-DD).")
 
     while True:
-            try:
-                end_date = input("write down the specific end date which you want to see (YYYY-MM-DD):")
-                datetime.strptime(end_date, "%Y-%m-%d").date()
-                break
-            except ValueError:
-                print("You should follow this format using number(YYYY-MM-DD).")
+        try:
+            end_date = input("write down the specific end date which you want to see (YYYY-MM-DD):")
+            datetime.strptime(end_date, "%Y-%m-%d").date()
+            break
+        except ValueError:
+            print("You should follow this format using number(YYYY-MM-DD).")
 
     range_date = df[(df['Date'] > start_date) & (df['Date'] < end_date)]
     print()
     print(range_date)
     print()
 
-def analyze_spending_by_category(df):
+def making_total_spending_data_frame(df):
     total_spending = df.groupby('Category')['Amount'].sum()
+    # set the column name
     total_spending = total_spending.reset_index()
-    total_spending.columns = ['Category', 'Total Spending']
+    total_spending.columns = ['Category', 'Total_Spending']
+    return total_spending
+
+def analyze_spending_by_category(df):
+    total_spending = making_total_spending_data_frame(df)
     print()
     print(f'This is total spending for each category.')
     print(total_spending)
+    print()
+
+def top_spending_category(df):
+    total_spending = making_total_spending_data_frame(df)
+    total_spending = total_spending[total_spending['Category'] != 'Income']
+    print()
+    print('This is the highest total spending with category')
+    print(total_spending.loc[total_spending['Total_Spending'] == total_spending['Total_Spending'].max()])
     print()

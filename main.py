@@ -9,6 +9,7 @@ def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
 
+
 def main():
     print("=== Personal Finance Tracker ===")
     while True:
@@ -45,6 +46,11 @@ def main():
                     data_management.view_trans_by_date_range(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
+            case "3":
+                try:
+                    df = data_management.add_transaction(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "5":
                 try:
                     data_management.del_transaction(df)   
@@ -53,6 +59,11 @@ def main():
             case "6":
                 try:
                     data_management.analyze_spending_by_category(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
+            case"8":
+                try:
+                    data_management.top_spending_category(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
             case "11":
