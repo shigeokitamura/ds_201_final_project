@@ -45,9 +45,13 @@ def main():
                     data_management.view_trans_by_date_range(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
+            case "6":
+                try:
+                    data_management.analyze_spending_by_category(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "11":
                 break
-
 
 if __name__ == "__main__":
     main()
