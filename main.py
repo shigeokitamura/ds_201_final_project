@@ -9,7 +9,6 @@ def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
 
-
 def main():
     print("=== Personal Finance Tracker ===")
     while True:
