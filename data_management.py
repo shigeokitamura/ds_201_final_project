@@ -89,3 +89,10 @@ def top_spending_category(df):
     print('This is the highest total spending with category')
     print(total_spending.loc[total_spending['Total_Spending'] == total_spending['Total_Spending'].max()])
     print()
+
+def save_transaction_to_csv(df):
+    print()
+    csv_name = input("write down file name plz.: ")
+    df.to_csv(f'{csv_name}.csv', index=False)
+    print('complete')
+    print()
