@@ -1,4 +1,5 @@
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 
 def view_all_trans(df):
@@ -56,3 +57,8 @@ def save_transaction_to_csv(df):
     df.to_csv(f'{csv_name}.csv', index=False)
     print('complete')
     print()
+
+def monthly_spending_trend(df):
+    df[['Year','Month','Day']] = df['Date'].str.split('-', expand= True)
+    spending = df[df['Category'] != 'Income']
+    spending.groupby('Month')['Amount'].plot(kind='line')
