@@ -47,7 +47,7 @@ def main():
                     print("There is no file.")
             case "3":
                 try:
-                    data_management.add_transaction(df)
+                    df = data_management.add_transaction(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
             case "6":
