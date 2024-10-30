@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import data_management
 
 def monthly_spending_trend(df):
     df[['Year','Month','Day']] = df['Date'].str.split('-', expand= True)
@@ -7,6 +6,7 @@ def monthly_spending_trend(df):
     spending.groupby('Month')['Amount'].sum().plot(kind='line')
     plt.xlabel('month')
     plt.ylabel('spending')
+    plt.title('Monthly Spending Trend')
     plt.show()
 
 def spending_by_category(df):
@@ -15,4 +15,5 @@ def spending_by_category(df):
     total_by_category.plot(kind='bar')
     plt.xlabel('Category')
     plt.ylabel('amount of spending')
+    plt.title('Spending By Category')
     plt.show()

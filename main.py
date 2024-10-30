@@ -32,7 +32,7 @@ def main():
         for idx, menu in enumerate(menus):
             print(f"{idx}. {menu}")
 
-        option = input("Choose an option (0-11): ")
+        option = input("Choose an option (0-12): ")
 
         match option:
             case "0":
