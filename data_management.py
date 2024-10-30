@@ -2,6 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 def add_transaction(df):
+    # print(df)
     while True:
         date = input("Enter the date (YYYY-MM-DD): ")
         try:
@@ -33,7 +34,7 @@ def add_transaction(df):
             continue
 
         data = {'Date': [date], 'Category': [category], 'Description': [description], 'Amount':[amount], 'Type': [ex_or_inc]}
-        df = pd.DataFrame(data)
+        df = pd.concat([df, pd.DataFrame(data)], ignore_index=True)
 
         print("Transaction added successfully!")
         print()
