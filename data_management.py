@@ -151,6 +151,13 @@ def edit_transaction(df):
                     continue
             else:
                 new_amount = None
+            new_type = input("Enter a new type(Income or Expense) or press Enter to keep current: ")
+            new_type = new_type.capitalize()
+            if new_type not in ["Income", "Expense"]:
+                print(f"{new_type} is not a valid format")
+                print("Please try again")
+                print()
+                continue
 
             if new_date != "":
                 df.loc[edt, 'Date'] = new_date
@@ -160,6 +167,8 @@ def edit_transaction(df):
                 df.loc[edt, 'Description'] = new_description
             if new_amount is not None:
                 df.loc[edt, 'Amount'] = new_amount
+            if new_type != "":
+                df.loc[edt, 'Type'] = new_type
 
             print("Transaction updated successfully!")
             break
