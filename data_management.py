@@ -1,6 +1,20 @@
 import pandas as pd
 from datetime import datetime
 
+def set_monthly_income(data: dict):
+    while True:
+        try:
+            value = float(input("Enter your total monthly income: "))
+            break
+        except ValueError:
+            print("Invalid income. Please enter again.")
+
+    data["monthly_income"] = value
+    print(f"Your monthly income is set to: ${value:.2f}")
+    print()
+
+    return data
+
 def del_transaction(df):
     print(df)
     while True:

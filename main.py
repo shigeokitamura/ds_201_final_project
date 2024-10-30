@@ -11,6 +11,8 @@ def import_a_csv_file() -> pd.DataFrame:
 
 
 def main():
+    data = {}
+
     print("=== Personal Finance Tracker ===")
     while True:
         menus = [
@@ -25,6 +27,7 @@ def main():
             "Show Top Spending Category",
             "Visualize Monthly Spending Trend",
             "Save Transactions to CSV",
+            "Set Monthly Income",
             "Exit",
         ]
 
@@ -77,6 +80,8 @@ def main():
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
             case "11":
+                data = data_management.set_monthly_income(data)
+            case "12":
                 break
 
 if __name__ == "__main__":
