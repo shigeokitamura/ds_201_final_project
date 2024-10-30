@@ -46,6 +46,7 @@ def view_all_trans(df):
     print(df)
     print()
 
+
 def view_trans_by_date_range(df):
     while True:
         try:
@@ -68,4 +69,11 @@ def view_trans_by_date_range(df):
     print(range_date)
     print()
 
-
+def analyze_spending_by_category(df):
+    total_spending = df.groupby('Category')['Amount'].sum()
+    total_spending = total_spending.reset_index()
+    total_spending.columns = ['Category', 'Total Spending']
+    print()
+    print(f'This is total spending for each category.')
+    print(total_spending)
+    print()
