@@ -39,7 +39,10 @@ def main():
             case "0":
                 df = import_a_csv_file()
             case "3":
-                data_management.add_transaction()
+                try:
+                    data_management.add_transaction(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "11":
                 break
 

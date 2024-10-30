@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 
-def add_transaction():
+def add_transaction(df):
     while True:
         date = input("Enter the date (YYYY-MM-DD): ")
         try:
@@ -19,9 +19,7 @@ def add_transaction():
         description = description.capitalize()
 
         amount = input("Enter the amount: ")
-        if amount.isnumeric():
-            amount = amount
-        else:
+        if not amount.isnumeric():
             print(f"{amount} is not a valid format ")
             print("Please try again")
             print()
@@ -37,7 +35,7 @@ def add_transaction():
         data = {'Date': [date], 'Category': [category], 'Description': [description], 'Amount':[amount], 'Type': [ex_or_inc]}
         df = pd.DataFrame(data)
 
-        df.to_csv("sampledata.csv", mode ='a', index = False, header = False)
         print("Transaction added successfully!")
         print()
         break
+    return df
