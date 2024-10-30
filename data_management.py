@@ -2,14 +2,13 @@ import pandas as pd
 from datetime import datetime
 
 def del_transaction(df):
-    # data = pd.read_csv("sampledata.csv")
     print(df)
     while True:
         delete = input("Enter the index of the transaction to delete: ")
         delete = int(delete)
         index_data = list(df.index)
         if delete in index_data:
-            data = df.drop(delete)
+            df = df.drop(delete)
             print("Transaction deleted successfully!")
             break
         else:
@@ -17,7 +16,7 @@ def del_transaction(df):
             print("Please try again")
             print()
             continue
-    print(df)
+    return df
 
 def add_transaction(df):
     # print(df)
