@@ -52,6 +52,11 @@ def main():
                     df = data_management.add_transaction(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
+            case "4":
+                try:
+                    df = data_management.edit_transaction(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "5":
                 try:
                     df = data_management.del_transaction(df)
