@@ -28,6 +28,7 @@ def main():
             "Visualize Monthly Spending Trend",
             "Visualize Spending by Category",
             "Set Monthly Income",
+            "Set Category Budget",
             "Save Transactions to CSV",
             "Exit",
         ]
@@ -88,11 +89,13 @@ def main():
             case "11":
                 data = data_management.set_monthly_income(data)
             case "12":
+                data = data_management.set_category_budget(data)
+            case "13":
                 try:
                     data_management.save_transaction_to_csv(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
-            case "13":
+            case "14":
                 break
 
 if __name__ == "__main__":

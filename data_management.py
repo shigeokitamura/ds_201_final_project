@@ -15,6 +15,27 @@ def set_monthly_income(data: dict):
 
     return data
 
+def set_category_budget(data: dict):
+    categories = ["Food", "Rent", "Utilities", "Transport"]
+    budgets = {}
+
+    while True:
+        try:
+            for category in categories:
+                budget = float(input(f"Enter your budget for {category}: "))
+                budgets[category] = budget
+            break
+        except ValueError:
+            print("Invalid value. Please enter again")
+
+    data["budgets"] = budgets
+
+    print("Your budgets have been set:")
+    for category in categories:
+        print(f"- {category}: ${data['budgets'][category]}")
+    print()
+
+    return data
 
 def del_transaction(df):
     print(df)
