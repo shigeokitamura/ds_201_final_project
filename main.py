@@ -38,6 +38,11 @@ def main():
         match option:
             case "0":
                 df = import_a_csv_file()
+            case "5":
+                try:
+                    data_management.del_transaction(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "11":
                 break
 
