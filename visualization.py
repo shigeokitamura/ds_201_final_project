@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+from matplotlib.pyplot import subplot, title
+
 
 def monthly_spending_trend(df):
     df[['Year','Month','Day']] = df['Date'].str.split('-', expand= True)
@@ -16,4 +18,10 @@ def spending_by_category(df):
     plt.xlabel('Category')
     plt.ylabel('amount of spending')
     plt.title('Spending By Category')
+    plt.show()
+
+def distribution_of_spending_by_categories(df):
+    spending = df[df['Type'] == 'Expense']
+    dis_spending_categories = spending.groupby('Category')['Amount'].sum()
+    dis_spending_categories.plot(kind='pie', subplots=True, autopct='%1.0f%%', title ='The Distribution of Spending across Categories')
     plt.show()
