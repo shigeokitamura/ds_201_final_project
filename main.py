@@ -24,6 +24,7 @@ def main():
             "Calculate Average Monthly Spending",
             "Show Top Spending Category",
             "Visualize Monthly Spending Trend",
+            "Visualize Spending by Category",
             "Save Transactions to CSV",
             "Exit",
         ]
@@ -31,7 +32,7 @@ def main():
         for idx, menu in enumerate(menus):
             print(f"{idx}. {menu}")
 
-        option = input("Choose an option (0-11): ")
+        option = input("Choose an option (0-12): ")
 
         match option:
             case "0":
@@ -73,10 +74,15 @@ def main():
                     print("There is no file.")
             case "10":
                 try:
-                    data_management.save_transaction_to_csv(df)
+                    visualization.spending_by_category(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
             case "11":
+                try:
+                    data_management.save_transaction_to_csv(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
+            case "12":
                 break
 
 if __name__ == "__main__":
