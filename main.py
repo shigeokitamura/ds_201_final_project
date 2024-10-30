@@ -61,6 +61,11 @@ def main():
                     data_management.top_spending_category(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
+            case "9":
+                try:
+                    visualization.monthly_spending_trend(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "10":
                 try:
                     data_management.save_transaction_to_csv(df)
