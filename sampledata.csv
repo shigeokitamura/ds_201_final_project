@@ -1,4 +1,48 @@
 Date,Category,Description,Amount,Type
+2024-02-01,Food,Grocery,55.50,Expense
+2024-02-03,Food,Breakfast,12,Expense
+2024-02-05,Transport,Subway Pass,30,Expense
+2024-02-08,Health,Medicine,25,Expense
+2024-02-10,Income,Salary,2200,Income
+2024-02-15,Utilities,Gas Bill,45,Expense
+2024-02-18,Transport,Train Ticket,15,Expense
+2024-02-20,Food,Dinner,40,Expense
+2024-03-01,Entertainment,Game Purchase,60,Expense
+2024-03-03,Food,Snack,8,Expense
+2024-03-05,Utilities,Phone Bill,50,Expense
+2024-03-10,Income,Freelance Work,750,Income
+2024-03-12,Food,Lunch,20,Expense
+2024-03-15,Transport,Taxi,25,Expense
+2024-03-20,Entertainment,Concert,85,Expense
+2024-03-25,Income,Freelance Project,400,Income
+2024-04-02,Utilities,Electricity Bill,65,Expense
+2024-04-05,Food,Takeout,35,Expense
+2024-04-10,Food,Brunch,30,Expense
+2024-04-15,Transport,Fuel,60,Expense
+2024-04-22,Income,Bonus,250,Income
+2024-05-01,Income,Salary,2200,Income
+2024-05-05,Transport,Bus Ticket,2.50,Expense
+2024-05-10,Utilities,Water Bill,40,Expense
+2024-05-12,Food,Brunch with Friends,55,Expense
+2024-05-15,Food,Cafe,18,Expense
+2024-05-20,Transport,Parking,20,Expense
+2024-06-01,Entertainment,Theater Ticket,45,Expense
+2024-06-05,Food,Ice Cream,10,Expense
+2024-06-10,Income,Consulting Fee,300,Income
+2024-06-15,Health,Gym Fee,40,Expense
+2024-06-20,Utilities,Water Bill,40,Expense
+2024-06-25,Income,Side Business,500,Income
+2024-07-01,Food,Picnic Supplies,50,Expense
+2024-07-02,Utilities,Electricity Bill,70,Expense
+2024-07-05,Transport,Car Rental,100,Expense
+2024-07-10,Food,Family Dinner,90,Expense
+2024-08-05,Transport,Bike Rental,15,Expense
+2024-08-10,Income,Investment Return,500,Income
+2024-08-12,Income,Freelance Work,600,Income
+2024-08-15,Food,Dinner Party,70,Expense
+2024-08-20,Food,Groceries,70,Expense
+2024-09-01,Utilities,Internet Bill,55,Expense
+2024-09-10,Entertainment,Streaming Subscription,15,Expense
 2024-10-01,Food,Grocery,50.75,Expense
 2024-10-02,Rent,Monthly Rent,1200,Expense
 2024-10-02,Utilities,Electricity Bill,60,Expense
@@ -13,3 +57,8 @@ Date,Category,Description,Amount,Type
 2024-10-20,Income,Investment Return,200,Income
 2024-10-25,Food,Groceries,80,Expense
 2024-10-28,Rent,Monthly Rent,1200,Expense
+2024-10-29,Utilities,Gas Bill,45,Expense
+2024-10-30,Food,Snacks,20,Expense
+2024-10-30,Income,Bonus,300,Income
+2024-10-31,Transport,Train Ticket,15,Expense
+2024-10-31,Food,Dinner Out,50,Expense
