@@ -1,6 +1,23 @@
 import pandas as pd
 from datetime import datetime
 
+def del_transaction(df):
+    print(df)
+    while True:
+        delete = input("Enter the index of the transaction to delete: ")
+        delete = int(delete)
+        index_data = list(df.index)
+        if delete in index_data:
+            df = df.drop(delete)
+            print("Transaction deleted successfully!")
+            break
+        else:
+            print("Invalid index")
+            print("Please try again")
+            print()
+            continue
+    return df
+
 def add_transaction(df):
     # print(df)
     while True:
