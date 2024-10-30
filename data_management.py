@@ -101,7 +101,7 @@ def analyze_spending_by_category(df):
     print()
 
     while True:
-        user = input('Do you want to see pie chart representing the distribution of spending across categories? (Yes/No)')
+        user = input('Do you want to see pie chart representing the distribution of spending across categories? (Yes/No): ')
         if user.lower() in ['yes','y']:
             visualization.distribution_of_spending_by_categories(df)
             print()
@@ -111,7 +111,7 @@ def analyze_spending_by_category(df):
             print()
             break
         else:
-            print("Follow the format (Yes/No)")
+            print("Follow the format (Yes/No): ")
             print()
 
 
