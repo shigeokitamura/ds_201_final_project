@@ -9,10 +9,6 @@ def import_a_csv_file() -> pd.DataFrame:
     data = pd.read_csv("sampledata.csv")
     return data
 
-def view_all_trans(df):
-    print(df)
-
-
 def main():
     print("=== Personal Finance Tracker ===")
     while True:
