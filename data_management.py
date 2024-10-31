@@ -217,3 +217,16 @@ def edit_transaction(df):
             continue
     return df.sort_values('Date')
 
+def set_monthly_income(data: dict):
+    while True:
+        try:
+            value = float(input("Enter your total monthly income: "))
+            break
+        except ValueError:
+            print("Invalid income. Please enter again.")
+
+    data["monthly_income"] = value
+    print(f"Your monthly income is set to: ${value:.2f}")
+    print()
+
+    return data
