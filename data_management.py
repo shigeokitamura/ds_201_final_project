@@ -1,8 +1,5 @@
 import pandas as pd
 from datetime import datetime
-import visualization
-
-
 
 def del_transaction(df):
     if len(df) == 0:
@@ -10,22 +7,32 @@ def del_transaction(df):
         print('There is no file. Try again.')
         print()
         return
-
+    print()
+    df = df.sort_values('Date')
     print(df)
     while True:
-        delete = input("Enter the index of the transaction to delete: ")
-        delete = int(delete)
+        delete = input("Enter the index of the transaction to delete (If you want to go back, just press 0): ")
         index_data = list(df.index)
-        if delete in index_data:
+        try:
+            delete = int(delete)
+        except ValueError:
+            print('You should the number of index or 0: ')
+            continue
+
+        if int(delete) in index_data:
             df = df.drop(delete)
             print("Transaction deleted successfully!")
+            print()
+            break
+        elif delete == 0:
             break
         else:
             print("Invalid index")
             print("Please try again")
             print()
             continue
-    return df
+    return df.sort_values('Date')
+
 
 def add_transaction(df):
     if len(df) == 0:
@@ -51,11 +58,14 @@ def add_transaction(df):
         description = description.capitalize()
 
         amount = input("Enter the amount: ")
-        if not amount.isnumeric():
+        try:
+            amount = float(amount)
+        except ValueError:
             print(f"{amount} is not a valid format ")
             print("Please try again")
             print()
             continue
+
         ex_or_inc = input("Is it an Income or an Expense: ")
         ex_or_inc = ex_or_inc.capitalize()
         if ex_or_inc not in ["Income", "Expense"]:
@@ -70,7 +80,8 @@ def add_transaction(df):
         print("Transaction added successfully!")
         print()
         break
-    return df
+    return df.sort_values('Date')
+
 
 def view_all_trans(df):
     if len(df) == 0:
@@ -78,10 +89,12 @@ def view_all_trans(df):
         print('There is no file. Try again.')
         print()
         return
+    df = df.sort_values('Date')
+    print()
+    print('--- All Transactions ---')
+    print(df.to_string(index=False))
+    print()
 
-    print()
-    print(df)
-    print()
 
 def view_trans_by_date_range(df):
     if len(df) == 0:
@@ -107,64 +120,18 @@ def view_trans_by_date_range(df):
             print("You should follow this format using number(YYYY-MM-DD).")
 
     range_date = df[(df['Date'] > start_date) & (df['Date'] < end_date)]
+    if len(range_date) == 0:
+        print()
+        print('No transactions found in this date range.')
+        print()
+        return
+    range_date = range_date.sort_values('Date')
+
     print()
+    print(f'--- Transactions from {start_date} to {end_date} ---')
     print(range_date)
     print()
 
-def making_total_spending_data_frame(df):
-    if len(df) == 0:
-        print()
-        print('There is no file. Try again.')
-        print()
-        return
-
-    df = df[df['Type'] == 'Expense']
-    total_spending = df.groupby('Category')['Amount'].sum()
-    # set the column name
-    total_spending = total_spending.reset_index()
-    total_spending.columns = ['Category', 'Total_Spending']
-    return total_spending
-
-def analyze_spending_by_category(df):
-    if len(df) == 0:
-        print()
-        print('There is no file. Try again.')
-        print()
-        return
-
-    total_spending = making_total_spending_data_frame(df)
-    print()
-    print(f'This is total spending for each category.')
-    print(total_spending)
-    print()
-
-    while True:
-        user = input('Do you want to see pie chart representing the distribution of spending across categories? (Yes/No): ')
-        if user.lower() in ['yes','y']:
-            visualization.distribution_of_spending_by_categories(df)
-            print()
-            break
-        elif user.lower() in ['no', 'n']:
-            print('Back to the menus')
-            print()
-            break
-        else:
-            print("Follow the format (Yes/No): ")
-            print()
-
-def top_spending_category(df):
-    if len(df) == 0:
-        print()
-        print('There is no file. Try again.')
-        print()
-        return
-
-    total_spending = making_total_spending_data_frame(df)
-    total_spending = total_spending[total_spending['Category'] != 'Income']
-    print()
-    print('This is the highest total spending with category')
-    print(total_spending.loc[total_spending['Total_Spending'] == total_spending['Total_Spending'].max()])
-    print()
 
 def save_transaction_to_csv(df):
     if len(df) == 0:
@@ -175,9 +142,10 @@ def save_transaction_to_csv(df):
 
     print()
     csv_name = input("write down file name plz.: ")
-    df.to_csv(f'{csv_name}.csv', index=False)
+    df.sort_values('Date').to_csv(f'{csv_name}.csv', index=False)
     print('Complete')
     print()
+
 
 def edit_transaction(df):
     if len(df) == 0:
@@ -185,7 +153,7 @@ def edit_transaction(df):
         print('There is no file. Try again.')
         print()
         return
-
+    df = df.sort_values('Date')
     print(df)
     while True:
         edt = input("Enter the index of the transaction to edit: ")
@@ -222,7 +190,7 @@ def edit_transaction(df):
                 new_amount = None
             new_type = input("Enter a new type(Income or Expense) or press Enter to keep current: ")
             new_type = new_type.capitalize()
-            if new_type not in ["Income", "Expense"]:
+            if new_type not in ["Income", "Expense", ""]:
                 print(f"{new_type} is not a valid format")
                 print("Please try again")
                 print()
@@ -240,10 +208,12 @@ def edit_transaction(df):
                 df.loc[edt, 'Type'] = new_type
 
             print("Transaction updated successfully!")
+            print()
             break
         else:
             print("Invalid index")
             print("Please try again")
             print()
             continue
-    return df
+    return df.sort_values('Date')
+
