@@ -1,5 +1,5 @@
 # Personal Finance Tracker
-With this app the user can keep track of all his transactions 
+With this app the user can keep track of all the transactions 
 and also have a visualization of theses.
 
 ## Requirements
