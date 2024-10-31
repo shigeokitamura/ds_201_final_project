@@ -50,6 +50,8 @@ def main():
             "Visualize Monthly Spending Trend",
             "Visualize Spending by Category",
             "Set Monthly Income",
+            "Set Category Budget",
+            "Check Budget Status",
             "Save Transactions to CSV",
             "Exit",
         ]
@@ -84,8 +86,12 @@ def main():
             case "11":
                 data_management.set_monthly_income(data)
             case "12":
-                data_management.save_transaction_to_csv(df)
+                data_management.set_category_budget(data)
             case "13":
+                data_analysis.check_budget_status(df, data)
+            case "14":
+                data_management.save_transaction_to_csv(df)
+            case "15":
                 print()
                 print('Exits the program:')
                 print('Exiting the Personal Finance Tracker. Goodbye!')
