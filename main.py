@@ -75,6 +75,8 @@ def main():
                 df = data_management.del_transaction(df)
             case "6":
                 data_management.analyze_spending_by_category(df)
+            case "7":
+                    data_analysis.average_monthly_spending(df)
             case "8":
                 data_management.top_spending_category(df)
             case "9":
@@ -82,7 +84,6 @@ def main():
             case "10":
                 visualization.spending_by_category(df)
             case "11":
-
                 data_management.save_transaction_to_csv(df)
             case "12":
                 break
