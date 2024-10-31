@@ -67,6 +67,11 @@ def main():
                     data_management.analyze_spending_by_category(df)
                 except UnboundLocalError or ValueError:
                     print("There is no file.")
+            case "7":
+                try:
+                    data_analysis.average_monthly_spending(df)
+                except UnboundLocalError or ValueError:
+                    print("There is no file.")
             case "8":
                 try:
                     data_management.top_spending_category(df)
