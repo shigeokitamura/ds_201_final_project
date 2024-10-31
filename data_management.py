@@ -22,7 +22,6 @@ def del_transaction(df):
     return df
 
 def add_transaction(df):
-    # print(df)
     while True:
         date = input("Enter the date (YYYY-MM-DD): ")
         try:
@@ -89,6 +88,7 @@ def view_trans_by_date_range(df):
     print()
 
 def making_total_spending_data_frame(df):
+    df = df[df['Type'] == 'Expense']
     total_spending = df.groupby('Category')['Amount'].sum()
     # set the column name
     total_spending = total_spending.reset_index()
@@ -116,8 +116,6 @@ def analyze_spending_by_category(df):
             print("Follow the format (Yes/No): ")
             print()
 
-
-
 def top_spending_category(df):
     total_spending = making_total_spending_data_frame(df)
     total_spending = total_spending[total_spending['Category'] != 'Income']
@@ -130,7 +128,7 @@ def save_transaction_to_csv(df):
     print()
     csv_name = input("write down file name plz.: ")
     df.to_csv(f'{csv_name}.csv', index=False)
-    print('complete')
+    print('Complete')
     print()
 
 def edit_transaction(df):
