@@ -64,55 +64,26 @@ def main():
             case "0":
                 df = import_a_csv_file()
             case "1":
-                if len(df) != 0:
-                    data_management.view_all_trans(df)
-                else:
-                    print("There is no file.")
+                data_management.view_all_trans(df)
             case "2":
-                try:
-                    data_management.view_trans_by_date_range(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                data_management.view_trans_by_date_range(df)
             case "3":
-                try:
-                    df = data_management.add_transaction(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                df = data_management.add_transaction(df)
             case "4":
-                try:
-                    df = data_management.edit_transaction(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                df = data_management.edit_transaction(df)
             case "5":
-                try:
-                    df = data_management.del_transaction(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                df = data_management.del_transaction(df)
             case "6":
-                try:
-                    data_management.analyze_spending_by_category(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                data_management.analyze_spending_by_category(df)
             case "8":
-                try:
-                    data_management.top_spending_category(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                data_management.top_spending_category(df)
             case "9":
-                try:
-                    visualization.monthly_spending_trend(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                visualization.monthly_spending_trend(df)
             case "10":
-                try:
-                    visualization.spending_by_category(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+                visualization.spending_by_category(df)
             case "11":
-                try:
-                    data_management.save_transaction_to_csv(df)
-                except UnboundLocalError or ValueError:
-                    print("There is no file.")
+
+                data_management.save_transaction_to_csv(df)
             case "12":
                 break
 
