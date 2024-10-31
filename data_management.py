@@ -5,6 +5,12 @@ import visualization
 
 
 def del_transaction(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     print(df)
     while True:
         delete = input("Enter the index of the transaction to delete: ")
@@ -22,7 +28,12 @@ def del_transaction(df):
     return df
 
 def add_transaction(df):
-    # print(df)
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     while True:
         date = input("Enter the date (YYYY-MM-DD): ")
         try:
@@ -62,11 +73,23 @@ def add_transaction(df):
     return df
 
 def view_all_trans(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     print()
     print(df)
     print()
 
 def view_trans_by_date_range(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     while True:
         try:
             start_date = input("write down the specific start date which you want to see (YYYY-MM-DD):")
@@ -89,6 +112,13 @@ def view_trans_by_date_range(df):
     print()
 
 def making_total_spending_data_frame(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
+    df = df[df['Type'] == 'Expense']
     total_spending = df.groupby('Category')['Amount'].sum()
     # set the column name
     total_spending = total_spending.reset_index()
@@ -96,6 +126,12 @@ def making_total_spending_data_frame(df):
     return total_spending
 
 def analyze_spending_by_category(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     total_spending = making_total_spending_data_frame(df)
     print()
     print(f'This is total spending for each category.')
@@ -116,9 +152,13 @@ def analyze_spending_by_category(df):
             print("Follow the format (Yes/No): ")
             print()
 
-
-
 def top_spending_category(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     total_spending = making_total_spending_data_frame(df)
     total_spending = total_spending[total_spending['Category'] != 'Income']
     print()
@@ -127,13 +167,25 @@ def top_spending_category(df):
     print()
 
 def save_transaction_to_csv(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     print()
     csv_name = input("write down file name plz.: ")
     df.to_csv(f'{csv_name}.csv', index=False)
-    print('complete')
+    print('Complete')
     print()
 
 def edit_transaction(df):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
     print(df)
     while True:
         edt = input("Enter the index of the transaction to edit: ")
