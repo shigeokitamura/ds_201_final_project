@@ -8,8 +8,10 @@ def del_transaction(df):
         print()
         return
     print()
+    index = pd.Index(range(1,len(df)+1))
+    df.index = index
     df = df.sort_values('Date')
-    print(df)
+    print(df.to_string(index=True))
     while True:
         delete = input("Enter the index of the transaction to delete (If you want to go back, just press 0): ")
         index_data = list(df.index)
