@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import subplot, title
-
 
 def monthly_spending_trend(df):
     if len(df) == 0:

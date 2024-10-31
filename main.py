@@ -32,11 +32,7 @@ def import_a_csv_file() -> pd.DataFrame:
             print("Follow the format (Yes/No): ")
 
 
-
-
-
 def main():
-
     print("=== Personal Finance Tracker ===")
     df = pd.DataFrame()
     while True:
@@ -74,11 +70,11 @@ def main():
             case "5":
                 df = data_management.del_transaction(df)
             case "6":
-                data_management.analyze_spending_by_category(df)
+                data_analysis.analyze_spending_by_category(df)
             case "7":
-                    data_analysis.average_monthly_spending(df)
+                data_analysis.average_monthly_spending(df)
             case "8":
-                data_management.top_spending_category(df)
+                data_analysis.top_spending_category(df)
             case "9":
                 visualization.monthly_spending_trend(df)
             case "10":
@@ -86,6 +82,9 @@ def main():
             case "11":
                 data_management.save_transaction_to_csv(df)
             case "12":
+                print()
+                print('Exits the program:')
+                print('Exiting the Personal Finance Tracker. Goodbye!')
                 break
 
 
