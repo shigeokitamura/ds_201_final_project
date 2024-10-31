@@ -35,6 +35,7 @@ def import_a_csv_file() -> pd.DataFrame:
 def main():
     print("=== Personal Finance Tracker ===")
     df = pd.DataFrame()
+    data = {}
     while True:
         menus = [
             "Import a CSV File",
@@ -48,6 +49,7 @@ def main():
             "Show Top Spending Category",
             "Visualize Monthly Spending Trend",
             "Visualize Spending by Category",
+            "Set Monthly Income",
             "Save Transactions to CSV",
             "Exit",
         ]
@@ -55,7 +57,7 @@ def main():
         for idx, menu in enumerate(menus):
             print(f"{idx}. {menu}")
 
-        option = input("Choose an option (0-12): ")
+        option = input(f"Choose an option (0-{len(menus) - 1}): ")
         match option:
             case "0":
                 df = import_a_csv_file()
@@ -72,7 +74,7 @@ def main():
             case "6":
                 data_analysis.analyze_spending_by_category(df)
             case "7":
-                data_analysis.average_monthly_spending(df)
+                data_analysis.average_monthly_spending(df, data)
             case "8":
                 data_analysis.top_spending_category(df)
             case "9":
@@ -80,8 +82,10 @@ def main():
             case "10":
                 visualization.spending_by_category(df)
             case "11":
-                data_management.save_transaction_to_csv(df)
+                data_management.set_monthly_income(data)
             case "12":
+                data_management.save_transaction_to_csv(df)
+            case "13":
                 print()
                 print('Exits the program:')
                 print('Exiting the Personal Finance Tracker. Goodbye!')

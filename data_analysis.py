@@ -1,7 +1,7 @@
 import pandas as pd
 import visualization
 
-def average_monthly_spending(df):
+def average_monthly_spending(df, data):
     if len(df) == 0:
         print()
         print('There is no file. Try again.')
@@ -14,6 +14,10 @@ def average_monthly_spending(df):
     average_spending = monthly_spending.groupby(month)['Amount'].mean()
     print()
     print("--- Average Monthly Spending ---")
+
+    if "monthly_income" in data:
+        print(f"Monthly Income: ${data['monthly_income']:.2f}\n")
+
     print(average_spending)
     print()
 
