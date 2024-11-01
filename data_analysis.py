@@ -79,3 +79,30 @@ def top_spending_category(df):
     print(total_spending.loc[total_spending['Total_Spending'] == total_spending['Total_Spending'].max()])
     print()
 
+def check_budget_status(df, data):
+    if not "budgets" in data:
+        print("Budgets have not been set.\n")
+
+        return
+
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
+    categories = df[df["Type"] == "Expense"]["Category"].unique().tolist()
+
+    print("--- Budget Status ---")
+    for category in categories:
+        total_spending = df[(df["Category"] == category) & (df["Type"] == "Expense")]["Amount"].sum()
+        budget = data["budgets"][category]
+
+        alert = ""
+        if total_spending > budget:
+            alert += "(Alert: Exceeded budget!)"
+        elif (total_spending / budget) > 0.9:
+            alert += "(Warning: Close to budget!)"
+
+        print(f"- {category}: ${total_spending:.2f} / ${budget:.2f} {alert}")
+    print()
