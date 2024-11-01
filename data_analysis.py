@@ -91,7 +91,7 @@ def check_budget_status(df, data):
         print()
         return
 
-    categories = ["Food", "Rent", "Utilities", "Transport"]
+    categories = df[df["Type"] == "Expense"]["Category"].unique().tolist()
 
     print("--- Budget Status ---")
     for category in categories:

@@ -231,8 +231,14 @@ def set_monthly_income(data: dict):
 
     return data
 
-def set_category_budget(data: dict):
-    categories = ["Food", "Rent", "Utilities", "Transport"]
+def set_category_budget(df: pd.DataFrame, data: dict):
+    if len(df) == 0:
+        print()
+        print('There is no file. Try again.')
+        print()
+        return
+
+    categories = df[df["Type"] == "Expense"]["Category"].unique().tolist()
     budgets = {}
 
     while True:

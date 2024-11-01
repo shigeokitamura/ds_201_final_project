@@ -86,7 +86,7 @@ def main():
             case "11":
                 data_management.set_monthly_income(data)
             case "12":
-                data_management.set_category_budget(data)
+                data_management.set_category_budget(df, data)
             case "13":
                 data_analysis.check_budget_status(df, data)
             case "14":
